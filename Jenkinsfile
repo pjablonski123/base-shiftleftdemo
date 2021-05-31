@@ -33,7 +33,7 @@ node {
     stage('Download latest twistcli') {
         withCredentials([usernamePassword(credentialsId: 'prisma_cloud', passwordVariable: 'PC_PASS', usernameVariable: 'PC_USER')]) {
             sh 'curl -k -u $PC_USER:$PC_PASS --output ./twistcli https://$PC_CONSOLE/api/v1/util/twistcli'
-            sh 'sudo chmod a+x ./twistcli'
+            sh 'chmod a+x ./twistcli'
         }
     }
 
