@@ -32,7 +32,7 @@ node {
     //$PC_USER,$PC_PASS,$PC_CONSOLE when Galileo is released. 
     stage('Download latest twistcli') {
         withCredentials([usernamePassword(credentialsId: 'prisma_cloud', passwordVariable: 'PC_PASS', usernameVariable: 'PC_USER')]) {
-            sh 'curl -k -u $PC_USER:$PC_PASS --output ./twistcli https://$PC_CONSOLE/api/v1/util/twistcli'
+            sh 'curl -k -u $PC_USER:$PC_PASS --output ./twistcli https://$TL_CONSOLE/api/v1/util/twistcli'
             sh 'chmod a+x ./twistcli'
         }
     }
