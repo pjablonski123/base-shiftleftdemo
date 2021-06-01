@@ -40,11 +40,11 @@ node {
     stage('Scan image with twistcli') {
         try {
 	    sh 'docker pull solalraveh/evilpetclinic'
-            //withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
+            withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
             //    sh 'curl -k -u $TL_USER:$TL_PASS --output ./twistcli https://$TL_CONSOLE/api/v1/util/twistcli'
             //    sh 'sudo chmod a+x ./twistcli'
             sh "./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details solalraveh/evilpetclinic"
-            //}
+            }
 	    // Scan the image
             //prismaCloudScanImage ca: '',
             //cert: '',
