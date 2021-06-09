@@ -9,6 +9,7 @@ node {
         checkout scm
     }
 
+	
 
     stage('Check image Git dependencies has no vulnerabilities') {
         try {
