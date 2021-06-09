@@ -46,7 +46,6 @@ node {
 	sh('./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details nginx')
         }
 	    
-            
 	    // Scan the image
             //prismaCloudScanImage ca: '',
             //cert: '',
