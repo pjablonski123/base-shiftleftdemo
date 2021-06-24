@@ -19,3 +19,4 @@ else
    echo "No $VULN vulnerabilities on dependencies in Git"
    exit 0
 fi
+
