@@ -65,6 +65,6 @@ stage("Scan Cloud Formation Template with API v2") {
 
     }
 }
-
+}
 
 
