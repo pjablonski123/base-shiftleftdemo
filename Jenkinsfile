@@ -60,9 +60,8 @@ node {
             //ignoreImageBuildTime:true
 	    
 stage("Scan Cloud Formation Template with API v2") {
-	sh 'chmod a+x ./twistcli'
-        
-
+        sh 'sudo pip3 install checkov'
+	sh 'echo "test" > iac.tf'
     }
 }
 }
