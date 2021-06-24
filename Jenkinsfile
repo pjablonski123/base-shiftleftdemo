@@ -43,8 +43,8 @@ node {
 	    //sh 'docker pull solalraveh/evilpetclinic'
 	    sh 'docker pull nginx'
 	        withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
-            //sh('./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details solalraveh/evilpetclinic')
-	sh('./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details nginx')
+            sh('./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details solalraveh/evilpetclinic')
+	//sh('./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details nginx')
         }
 	    
 	    // Scan the image
