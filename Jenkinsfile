@@ -60,8 +60,8 @@ node {
             //ignoreImageBuildTime:true
 	    
 stage("Scan Cloud Formation Template with API v2") {
-        sh 'pip3 install checkov'
-	sh 'checkov'
+        //sh 'pip3 install checkov'
+	//sh 'checkov'
     }
 }
 }
