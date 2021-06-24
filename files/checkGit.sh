@@ -17,5 +17,5 @@ if (( $VULN == 0 )); then
    exit 0
 else
    echo "There are $VULN vulnerabilities on dependencies in Git"
-   exit 0
+   exit 1
 fi
