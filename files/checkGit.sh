@@ -14,7 +14,7 @@ VULN=$(echo $REPOOUTPUT | sed -n -e 's/^.*\(vulnerabilitiesCount\)/\1/p' | cut -
 
 if (( $VULN == 1 )); then
    echo "There are Code Repo Vulnerabilities!"
-   exit 1
+   exit 0
 else
    echo "No $VULN vulnerabilities on dependencies in Git"
    exit 0
