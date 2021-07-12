@@ -69,4 +69,3 @@ then
 else
   echo "Container WAAS policy install failed, $status"
 fi
-
