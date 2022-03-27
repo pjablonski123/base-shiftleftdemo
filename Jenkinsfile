@@ -43,7 +43,7 @@ node {
 	    //sh 'docker pull solalraveh/evilpetclinic'
 	    sh 'docker pull nginx'
 	        withCredentials([usernamePassword(credentialsId: 'prisma_cloud', passwordVariable: 'PC_PASS', usernameVariable: 'PC_USER')]) {
-            sh('./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details solalraveh/evilpetclinic')
+            sh('./twistcli images scan --u $PC_USER --p $PC_PASS --address https://$TL_CONSOLE --details solalraveh/evilpetclinic')
 	//sh('./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details nginx')
         }
 	    
