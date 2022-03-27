@@ -35,7 +35,6 @@ node {
         withCredentials([usernamePassword(credentialsId: 'prisma_cloud', passwordVariable: 'PC_PASS', usernameVariable: 'PC_USER')]) {
             sh 'curl -k -u $PC_USER:$PC_PASS --output ./twistcli https://$TL_CONSOLE/api/v1/util/twistcli'
             sh 'chmod a+x ./twistcli'
-	    sh './twistcli images scan --u $PC_USER --p $PC_PASS --address https://$TL_CONSOLE --details solalraveh/evilpetclinic'
         }
     }
 
