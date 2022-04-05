@@ -64,6 +64,7 @@ node {
 
         stage('IaC Scan') {
                     sh "export PRISMA_API_URL=https://api.prismacloud.io"
+		    sh "pip3 install pipenv"
                     sh "pipenv install"
                     sh "pipenv run pip install bridgecrew"
                     sh "pipenv run bridgecrew --directory . --bc-api-key $BC_API --repo-id https://github.com/pjablonski123/base-shiftleftdemo"
