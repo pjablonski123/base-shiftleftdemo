@@ -96,6 +96,5 @@ node {
 
     stage('Run bad HTTP stuff for WAAS to catch') {
         sh('chmod +x ./files/waas_attacks.sh && ./files/waas_attacks.sh')
-    }
+    }*/
 }
-*/
