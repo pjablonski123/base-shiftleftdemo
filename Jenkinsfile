@@ -68,7 +68,7 @@ node {
 		    sh "pip3 install pipenv"
                     sh "pipenv install"
                     sh "export PRISMA_API_URL=https://api.prismacloud.io"
-		    sh "export LOG_LEVEL=DEBUG"
+		    sh "export LOG_LEVEL=WARNING"
                     sh "pipenv run pip install bridgecrew"
 		    //sh "pip3 install checkov"
 		    //sh "checkov -d . --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"
