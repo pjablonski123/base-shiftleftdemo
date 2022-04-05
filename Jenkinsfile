@@ -64,12 +64,12 @@ node {
 
         stage('IaC Scan') {
             //try {
-                checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/pjablonski123/base-shiftleftdemo']]])
-                script { 
+              //  checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/pjablonski123/base-shiftleftdemo']]])
+                try { 
                     sh "export PRISMA_API_URL=https://api.prismacloud.io"
                     sh "pipenv install"
                     sh "pipenv run pip install bridgecrew"
-                    sh "pipenv run bridgecrew --directory . --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"
+                    sh "pipenv run bridgecrew --directory . --bc-api-key $BC_API --repo-id https://github.com/pjablonski123/base-shiftleftdemo"
                 }
            // }
         }
