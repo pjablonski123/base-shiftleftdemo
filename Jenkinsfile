@@ -69,7 +69,7 @@ node {
 		    sh "pip3 install pipenv"
                     sh "pipenv install"
                     sh "pipenv run pip install bridgecrew"
-                    sh "pipenv run bridgecrew --directory . --bc-api-key $BC_API --repo-id https://github.com/pjablonski123/base-shiftleftdemo"
+                    sh "pipenv run bridgecrew --directory . --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"
                 }
  
 
