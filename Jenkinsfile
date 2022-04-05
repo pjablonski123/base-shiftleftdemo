@@ -63,7 +63,7 @@ node {
 		
 
         stage('IaC Scan') {
-            steps {
+            try {
                 checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/pjablonski123/base-shiftleftdemo']]])
                 script { 
                     sh "export PRISMA_API_URL=https://api.prismacloud.io"
