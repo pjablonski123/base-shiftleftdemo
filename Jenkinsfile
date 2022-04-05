@@ -53,7 +53,29 @@ node {
         }
     }
 
+/*
+    agent {
+        docker {
+            image 'kennethreitz/pipenv:latest'
+            args '-u root --privileged -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    */
+		
+    stages {
+        stage('test') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/pjablonski123/base-shiftleftdemo']]])
+                script { 
+                    sh "export PRISMA_API_URL=https://api.prismacloud.io"
+                    sh "pipenv install"
+                    sh "pipenv run pip install bridgecrew"
+                    sh "pipenv run bridgecrew --directory . --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"
+                }
+            }
+        }
+    }
 
+/*
     stage('Scan K8s yaml manifest with Bridgecrew') {  
 	withDockerContainer(image: 'bridgecrew/jenkins_bridgecrew_runner:latest') {
 	sh "/run.sh $BC_API https://github.com/pasqua1e/shiftleft_demo-build/" 
@@ -76,3 +98,4 @@ node {
         sh('chmod +x ./files/waas_attacks.sh && ./files/waas_attacks.sh')
     }
 }
+*/
