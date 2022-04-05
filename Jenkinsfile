@@ -61,8 +61,8 @@ node {
         }
     */
 		
-    stages {
-        stage('test') {
+
+        stage('IaC Scan') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/pjablonski123/base-shiftleftdemo']]])
                 script { 
@@ -73,7 +73,7 @@ node {
                 }
             }
         }
-    }
+ 
 
 /*
     stage('Scan K8s yaml manifest with Bridgecrew') {  
