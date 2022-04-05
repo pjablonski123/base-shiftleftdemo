@@ -64,6 +64,7 @@ node {
 
         stage('IaC Scan') {
                     sh "export PRISMA_API_URL=https://api.prismacloud.io"
+		    sh "sudo apt install python3-pip"
 		    sh "pip3 install pipenv"
                     sh "pipenv install"
                     sh "pipenv run pip install bridgecrew"
