@@ -72,7 +72,7 @@ node {
                     sh "pipenv run pip install bridgecrew"
 		    //sh "pip3 install checkov"
 		    //sh "checkov -d . --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"
-                    sh "pipenv run bridgecrew --directory .  --address $PRISMA_API_URL --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"
+                    sh "pipenv run bridgecrew --directory . --prisma-api-url $PRISMA_API_URL --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"
                 }
  
 
