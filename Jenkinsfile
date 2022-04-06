@@ -63,8 +63,12 @@ node {
                     sh "pipenv run pip install bridgecrew"
 	            sh "pipenv run bridgecrew --directory iac --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"        
 	}
- 
-
+	
+	
+    stage('Sandboxing') { 
+	sh "./twistcli sandbox --address $TL_CONSOLE --analysis-duration 2m --u $TL_USER  --p $TL_PASS --output-file sandbox_out.json pasqu4le/evilpetclinic:latest"
+    }	  
+	  
 /*
     stage('Scan K8s yaml manifest with Bridgecrew') {  
 	withDockerContainer(image: 'bridgecrew/jenkins_bridgecrew_runner:latest') {
