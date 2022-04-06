@@ -65,8 +65,10 @@ node {
 	}
 	
 	
-    stage('Sandboxing') { 
+    stage('Sandboxing') {
+	withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
 	sh "./twistcli sandbox --address $TL_CONSOLE --analysis-duration 2m --u $TL_USER  --p $TL_PASS --output-file sandbox_out.json pasqu4le/evilpetclinic:latest"
+	}
     }	  
 	  
 /*
