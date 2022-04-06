@@ -16,7 +16,7 @@ node {
             sh 'sudo chmod a+x ./twistcli'
         }
     }
-/*
+
     stage('Check image Git dependencies has no vulnerabilities') {
         try {
             withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
@@ -52,7 +52,7 @@ node {
 			throw RuntimeException("Build failed for some specific reason!")
         }
     }
-*/
+
 /*
     agent {
         docker {
