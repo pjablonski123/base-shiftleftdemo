@@ -53,15 +53,6 @@ node {
         }
     }
 
-/*
-    agent {
-        docker {
-            image 'kennethreitz/pipenv:latest'
-            args '-u root --privileged -v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    */
-		
-
         stage('IaC Scan') {
 		    sh "sudo apt-get update"
 		    sh "sudo apt-get -y install python3-pip"
