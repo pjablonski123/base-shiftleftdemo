@@ -64,7 +64,7 @@ node {
 	            sh "pipenv run bridgecrew --directory iac2 --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"        
 	}
 	
-	
+
     stage('Sandboxing') {
 	withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
 	sh "./twistcli sandbox --address https://$TL_CONSOLE --analysis-duration 2m --u $TL_USER  --p $TL_PASS --output-file sandbox_out.json pasqu4le/evilpetclinic:latest"
@@ -77,7 +77,7 @@ node {
 	sh "/run.sh $BC_API https://github.com/pasqua1e/shiftleft_demo-build/" 
 	}
     }
-	
+	*/
 
     stage('Deploy evilpetclinic') {
         sh 'kubectl create ns evil --dry-run -o yaml | kubectl apply -f -'
@@ -92,5 +92,5 @@ node {
 
     stage('Run bad HTTP stuff for WAAS to catch') {
         sh('chmod +x ./files/waas_attacks.sh && ./files/waas_attacks.sh')
-    }*/
+    }
 }
