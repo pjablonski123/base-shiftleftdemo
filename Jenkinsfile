@@ -16,7 +16,7 @@ node {
             sh 'sudo chmod a+x ./twistcli'
         }
     }
-
+/*
     stage('CodeRepo scan') {
         try {
             withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
@@ -34,7 +34,7 @@ node {
         withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
             sh('chmod +x files/addPolicies.sh && ./files/addPolicies.sh')
         }
-    }
+    }*/
 
     
 
@@ -52,7 +52,7 @@ node {
 			throw RuntimeException("Build failed for some specific reason!")
         }
     }
-
+/*
         stage('IaC Scan') {
 		    sh "sudo apt-get update"
 		    sh "sudo apt-get -y install python3-pip"
@@ -62,7 +62,7 @@ node {
 		    sh "export LOG_LEVEL=WARNING"
                     sh "pipenv run pip install bridgecrew"
 	            sh "pipenv run bridgecrew --directory iac2 --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"        
-	}
+	}*/
 	
 
     stage('Sandboxing') {
