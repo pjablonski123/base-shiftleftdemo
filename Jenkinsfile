@@ -17,7 +17,7 @@ node {
         }
     }
 
-    stage('Check image Git dependencies has no vulnerabilities') {
+    stage('CodeRepo scan') {
         try {
             withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
                 sh('chmod +x files/checkGit.sh && ./files/checkGit.sh')
@@ -30,7 +30,7 @@ node {
     }
 
     //$PC_USER,$PC_PASS,$PC_CONSOLE when Galileo is released. 
-    stage('Apply security policies (Policy-as-Code) for evilpetclinic') {
+    stage('Apply security policies') {
         withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
             sh('chmod +x files/addPolicies.sh && ./files/addPolicies.sh')
         }
