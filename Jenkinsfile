@@ -61,7 +61,7 @@ node {
                     sh "export PRISMA_API_URL=https://api.prismacloud.io"
 		    sh "export LOG_LEVEL=WARNING"
                     sh "pipenv run pip install bridgecrew"
-	            sh "pipenv run bridgecrew --directory iac2 --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"        
+	            sh "pipenv run bridgecrew --directory iac --bc-api-key $BC_API --repo-id pjablonski123/base-shiftleftdemo"        
 	}
 	
 /*
