@@ -58,7 +58,7 @@ node {
 		    sh "sudo apt-get -y install python3-pip"
 		    sh "pip3 install pipenv"
 		//sh "pipenv --venv"
-		sh "rm -d /root/.local/share/virtualenvs/shiftleftdemo-4WP0SCa2"
+		sh "rm -r /root/.local/share/virtualenvs/shiftleftdemo-4WP0SCa2"
                     sh "pipenv install"
                     sh "export PRISMA_API_URL=https://api.prismacloud.io"
 		    sh "export LOG_LEVEL=WARNING"
