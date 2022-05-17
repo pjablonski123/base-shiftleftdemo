@@ -16,7 +16,7 @@ node {
             sh 'sudo chmod a+x ./twistcli'
         }
     }
-
+/*
     stage('CodeRepo scan') {
         try {
             withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
@@ -52,11 +52,12 @@ node {
 			throw RuntimeException("Build failed for some specific reason!")
         }
     }
-
+*/
         stage('IaC Scan') {
 		    sh "sudo apt-get update"
 		    sh "sudo apt-get -y install python3-pip"
 		    sh "pip3 install pipenv"
+		sh "pipenv --venv"
                     sh "pipenv install"
                     sh "export PRISMA_API_URL=https://api.prismacloud.io"
 		    sh "export LOG_LEVEL=WARNING"
