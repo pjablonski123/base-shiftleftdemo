@@ -12,7 +12,7 @@ node {
 
     stage('Download latest twistcli') {
         withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
-            sh 'curl -k -v -u $TL_USER:$TL_PASS --output ./twistcli https://$TL_CONSOLE/api/v22.06/util/twistcli'
+            sh 'curl -k -v -u $TL_USER:$TL_PASS --output ./twistcli $TL_CONSOLE/api/v22.06/util/twistcli'
             sh 'chmod a+x ./twistcli'
         }
     }
@@ -42,11 +42,11 @@ node {
         try {
 		sh 'docker pull pasqu4le/evilpetclinic:latest'
             withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
-                sh 'curl -k -u $TL_USER:$TL_PASS --output ./twistcli https://$TL_CONSOLE/api/v1/util/twistcli'
+                sh 'curl -k -u $TL_USER:$TL_PASS --output ./twistcli $TL_CONSOLE/api/v1/util/twistcli'
                 sh 'chmod a+x ./twistcli'
 		sh 'pwd'
 		sh 'ls -al'
-                sh './twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE --details pasqu4le/evilpetclinic'
+                sh './twistcli images scan --u $TL_USER --p $TL_PASS --address $TL_CONSOLE --details pasqu4le/evilpetclinic'
             }
         } catch (err) {
             echo err.getMessage()
@@ -71,7 +71,7 @@ node {
 /*
     stage('Sandboxing') {
 	withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
-	sh "./twistcli sandbox --address https://$TL_CONSOLE --analysis-duration 2m --u $TL_USER  --p $TL_PASS --output-file sandbox_out.json pasqu4le/evilpetclinic:latest"
+	sh "./twistcli sandbox --address $TL_CONSOLE --analysis-duration 2m --u $TL_USER  --p $TL_PASS --output-file sandbox_out.json pasqu4le/evilpetclinic:latest"
 	}
     }	  
 	  
