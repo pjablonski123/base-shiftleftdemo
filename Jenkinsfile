@@ -13,7 +13,7 @@ node {
     stage('Download latest twistcli') {
         withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
             sh 'curl -k -v -u $TL_USER:$TL_PASS --output ./twistcli https://$TL_CONSOLE/api/v22.06/util/twistcli'
-            sh 'sudo chmod a+x ./twistcli'
+            sh 'chmod a+x ./twistcli'
         }
     }
 
