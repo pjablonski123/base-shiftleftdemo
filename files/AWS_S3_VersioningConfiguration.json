@@ -11,7 +11,22 @@
           }
         },
         "VersioningConfiguration": {
-          "Status": "Disabled"
+          "Status": "Enabled"
+        },
+        "PublicAccessBlockConfiguration": {
+          "RestrictPublicBuckets": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "BlockPublicAcls": true
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
+              }
+            }
+          ]
         }
       }
     }

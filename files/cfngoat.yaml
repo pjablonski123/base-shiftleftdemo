@@ -67,6 +67,7 @@ Resources:
       Tags: 
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-ebs"
+      Encrypted: True
 
   ### CFN Does not Support Volume Snapshot
 
@@ -202,6 +203,17 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-flowlogs"
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        RestrictPublicBuckets: True
+        IgnorePublicAcls: True
+        BlockPublicPolicy: True
+        BlockPublicAcls: True
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
   
   #############
   ###  IAM  ###
@@ -259,6 +271,7 @@ Resources:
             AWS: !Sub arn:aws:iam::${AWS::AccountId}:root
           Action: kms:*
           Resource: '*'
+      EnableKeyRotation: True
 
   LogsKeyAlias:
     Type: AWS::KMS::Alias
@@ -288,17 +301,15 @@ Resources:
       AllocatedStorage: 20
       MasterUsername: admin
       MasterUserPassword: !Ref Password
-      MultiAZ: False
+      MultiAZ: true
       BackupRetentionPeriod: 0 
-      StorageEncrypted: False
-      MonitoringInterval: 0 
-      PubliclyAccessible: True
+      StorageEncrypted: true
+      MonitoringInterval: true
       Tags:
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-rds"
         - Key: Environment
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}"
-
   DefaultDBOptionGroup:
     Type: AWS::RDS::OptionGroup
     Properties: 
@@ -310,7 +321,6 @@ Resources:
           Value: !Sub "og-${AWS::AccountId}-${CompanyName}-${Environment}"
         - Key: Environment
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}"
-
   DefaultDBParameterGroup:
     Type: AWS::RDS::DBParameterGroup
     Properties: 
@@ -592,10 +602,20 @@ Resources:
     DeletionPolicy: Delete
     Properties:
       BucketName: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-data"
-      AccessControl: PublicRead
       Tags:
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-data"
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        RestrictPublicBuckets: True
+        IgnorePublicAcls: True
+        BlockPublicPolicy: True
+        BlockPublicAcls: True
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
 
   ### TODO - Custom Upload of insecure document
 
@@ -609,6 +629,17 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-financials"
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        RestrictPublicBuckets: True
+        IgnorePublicAcls: True
+        BlockPublicPolicy: True
+        BlockPublicAcls: True
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
 
   OperationsBucket:
     # not encrypted, no access logs
@@ -622,6 +653,15 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-operations"
+      PublicAccessBlockConfiguration:
+        RestrictPublicBuckets: True
+        IgnorePublicAcls: True
+        BlockPublicPolicy: True
+        BlockPublicAcls: True
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
 
   DataScienceBucket:
     # not encrypted
@@ -638,6 +678,15 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-data-science"
+      PublicAccessBlockConfiguration:
+        RestrictPublicBuckets: True
+        IgnorePublicAcls: True
+        BlockPublicPolicy: True
+        BlockPublicAcls: True
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
 
   LogsBucket:
     # not encrypted
@@ -656,6 +705,11 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-logs"
+      PublicAccessBlockConfiguration:
+        RestrictPublicBuckets: True
+        IgnorePublicAcls: True
+        BlockPublicPolicy: True
+        BlockPublicAcls: True
 
    ########################
    ### Clean S3 Buckets ### 
