@@ -46,7 +46,7 @@ node {
                 sh 'chmod a+x ./twistcli'
 		sh 'pwd'
 		sh 'ls -al'
-                sh './twistcli images scan --u $TL_USER --p $TL_PASS --address $TL_CONSOLE --details pasqu4le/evilpetclinic'
+                sh './twistcli images scan --u $TL_USER --p $TL_PASS --address $TL_CONSOLE --details docker.io/pasqu4le/evilpetclinic'
             }
         } catch (err) {
             echo err.getMessage()
